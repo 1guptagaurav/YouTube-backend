@@ -1,0 +1,15 @@
+{
+  "name": "video-7",
+  "version": "1.0.0",
+  "description": "backend by chai aur code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "javascript"
+  ],
+  "author": "Gaurav Gupta",
+  "license": "ISC"
+}
