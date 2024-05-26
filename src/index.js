@@ -1,25 +1,18 @@
-import dotenv from 'dotenv'
-import mongoose from "mongoose";
-import { DB_NAME } from "./constants.js";
-import express from "express";
-const app=express();
-dotenv.config({
-    path: './env'
-});
-( () => {
-    try {
-        //await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-        // app.on("error",(error) => {
-        //     console.log("error occured:-",error)
-        //     throw error
-        // })
 
-        app.listen(process.env.PORT,()=>{
-            console.log(`app is listening on port ${process.env.PORT}`)
-        })
+import db_connect from './db/index.js';
 
-    } catch (error) {
-        console.error("Error from database,",error)
-        throw error
-    }
-})()
+
+
+let port=process.env.PORT||8000
+db_connect()
+.then(
+    app.on('uncaughtException',(err)=>{
+        console.error(err);
+        throw err
+    }),
+    app.listen(port,()=>{
+    console.log(`app connect on port ${port}`)
+}))
+.catch((err)=>{
+    console.log("MongoDB connect failed!!!",err)
+})
