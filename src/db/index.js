@@ -5,12 +5,12 @@ import express from "express";
 dotenv.config({
     path: './env'
 });
-const app=express();
 
-const db_connect=(  () => {
+
+const db_connect=( async () => {
     try {
-        // mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
-
+        //mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`)
+        console.log('hello world')
     } catch (error) {
         console.error("Error from database,",error)
         throw error
